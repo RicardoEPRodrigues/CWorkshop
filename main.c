@@ -1,49 +1,96 @@
 #include <stdio.h>
 #include <limits.h>
 
-float grades[10] = {
-        10, 9, 18, 5, 3,
-        19, 15, 13, 8, 12
-};
+float add(float value);
 
-float lowest_grade(float grades[], int size) {
-    float lowest = INT_MAX;
-    for (int i = 0; i < size; ++i) {
-        if (grades[i] < lowest) {
-            lowest = grades[i];
-        }
-    }
-    return lowest;
-}
+float subtract(float value);
 
-float lowest_grade_while(float grades[], int size) {
-    float lowest = INT_MAX;
-    int i = 0;
-    while (i < size) {
-        if (grades[i] < lowest) {
-            lowest = grades[i];
-        }
-        ++i;
-    }
-    return lowest;
-}
+float multiply(float value);
 
-// what problems could this create
-float lowest_grade_do_while(float grades[], int size) {
-    float lowest = INT_MAX;
-    int i = 0;
-    do {
-        if (grades[i] < lowest) {
-            lowest = grades[i];
-        }
-        ++i;
-    } while (i < size);
-    return lowest;
-}
+float divide(float value);
+
+float clear();
+
+float evaluateInput(float value, int input);
 
 int main() {
-    printf("Hello, World!\n");
-    float lowestGrade = lowest_grade_do_while(grades, 10);
-    printf("The lowest grade is %.2f", lowestGrade);
+    float value = 0.0f;
+    printf("Hello! Welcome to the CWorkshop Calculator!\n");
+
+    int input = 0;
+    do {
+        printf("\nVALUE: %.2f\n\n", value);
+        printf("0 - Exit; 9 - Clear;\n");
+        printf("1 - Add; 2 - Subtract; 3 - Multiply; 4 - Divide;\n");
+
+        printf("INPUT: ");
+        scanf("%d", &input);
+        printf("\n\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\n\n");
+
+        value = evaluateInput(value, input);
+    } while (input != 0);
+
     return 0;
+}
+
+float add(float value) {
+    float scanValue = 0;
+    printf("%.2f + ", value);
+    scanf("%f", &scanValue);
+    return value + scanValue;
+}
+
+float subtract(float value) {
+    float scanValue = 0;
+    printf("%.2f - ", value);
+    scanf("%f", &scanValue);
+    return value - scanValue;
+}
+
+float multiply(float value) {
+    float scanValue = 0;
+    printf("%.2f * ", value);
+    scanf("%f", &scanValue);
+    return value * scanValue;
+}
+
+float divide(float value) {
+    float scanValue = 0;
+    printf("%.2f / ", value);
+    scanf("%f", &scanValue);
+
+    if (scanValue == 0) {
+        printf("Can't divide by Zero!");
+        return value;
+    }
+    return value / scanValue;
+}
+
+float clear() {
+    printf("Clearing Value\n");
+    return 0;
+}
+
+float evaluateInput(float value, int input) {
+    switch (input) {
+        case 1:
+            value = add(value);
+            break;
+        case 2:
+            value = subtract(value);
+            break;
+        case 3:
+            value = multiply(value);
+            break;
+        case 4:
+            value = divide(value);
+            break;
+        case 9:
+            value = clear();
+            break;
+        case 0:
+        default:
+            break;
+    }
+    return value;
 }
