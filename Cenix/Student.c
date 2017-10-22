@@ -2,7 +2,7 @@
 // Created by Ricardo Rodrigues on 18/10/2017.
 //
 
-#include <mem.h>
+#include <memory.h>
 #include <stdio.h>
 #include "Student.h"
 

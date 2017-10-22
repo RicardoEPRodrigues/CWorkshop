@@ -2,7 +2,7 @@
 // Created by Ricardo Rodrigues on 18/10/2017.
 //
 
-#include <mem.h>
+#include <memory.h>
 #include <stdio.h>
 #include "Course.h"
 
@@ -22,8 +22,8 @@ void Course_addNews(Course *course, char news[50]) {
 
 void Course_info(Course *course) {
     printf("\tName: %s; Id: %d;\n", course->name, course->id);
-    printf("\tNews:\n");
+    printf("\t\tNews:\n");
     for (unsigned int i = 0; i < course->newsCount; ++i) {
-        printf("\t\t%s\n", course->news[i]);
+        printf("\t\t\t%s\n", course->news[i]);
     }
 }

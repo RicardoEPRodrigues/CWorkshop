@@ -39,7 +39,7 @@ int main() {
         printf("\n");
     }
 
-    int exit;
-    scanf("%d", &exit);
+//    int exit;
+//    scanf("%d", &exit);
     return 0;
 }
