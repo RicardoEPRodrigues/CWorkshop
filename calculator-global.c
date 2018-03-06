@@ -38,7 +38,7 @@ int main() {
     
         printf("Valor: %f\n", value);
        
-        printf("1 - Sum; 2 - Subtract; 3 - Multiply; 4 - Divide; 5 - Clear; 6 - Exit\n\n");
+        printf("'+' - Sum; '-' - Subtract; '*' - Multiply; '/' - Divide; 'c' - Clear; 'e' - Exit\n\n");
         
         printf("OPTION: ");
         scanf(" %c", &option);
