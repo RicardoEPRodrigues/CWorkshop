@@ -4,15 +4,23 @@
 
 #include <memory.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "Student.h"
 
-Student Student_new(const char name[50], unsigned int id) {
-    Student student = {{0}, id, {NULL}, 0};
-    strcpy(student.name, name);
+Student* Student_new(const char name[50], unsigned int id) {
+    Student* student = malloc(sizeof(Student));
+    student->id = id;
+    strcpy(student->name, name);
+    student->coursesCount = 0;
     return student;
 }
 
-void Student_addCourse(Student *student, Course* course) {
+void Student_delete(Student* student) {
+    if (student == NULL) return;
+    free(student);
+}
+
+void Student_addCourse(Student* student, Course* course) {
     if (student->coursesCount > 10) {
         return;
     }
@@ -20,7 +28,7 @@ void Student_addCourse(Student *student, Course* course) {
     ++student->coursesCount;
 }
 
-void Student_info(Student *student) {
+void Student_info(Student* student) {
     printf("Name: %s; Id: %d;\n", student->name, student->id);
     printf("Courses:\n");
     for (unsigned int i = 0; i < student->coursesCount; ++i) {

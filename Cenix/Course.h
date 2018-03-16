@@ -13,10 +13,12 @@ typedef struct {
     unsigned int newsCount;
 } Course;
 
-Course Course_new(const char name[50], unsigned int id);
+Course* Course_new(const char name[50], unsigned int id);
 
-void Course_addNews(Course *course, char news[50]);
+void Course_delete(Course* course);
 
-void Course_info(Course *course);
+void Course_addNews(Course* course, char news[50]);
+
+void Course_info(Course* course);
 
 #endif //CWORKSHOP10_17_COURSE_H

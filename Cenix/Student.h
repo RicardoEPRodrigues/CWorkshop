@@ -11,14 +11,16 @@ typedef struct {
     char name[50];
     unsigned int id;
 
-    Course *courses[10];
+    Course* courses[10];
     unsigned int coursesCount;
 } Student;
 
-Student Student_new(const char name[50], unsigned int id);
+Student* Student_new(const char name[50], unsigned int id);
 
-void Student_addCourse(Student *student, Course *course);
+void Student_delete(Student* student);
 
-void Student_info(Student *student);
+void Student_addCourse(Student* student, Course* course);
+
+void Student_info(Student* student);
 
 #endif //CWORKSHOP10_17_STUDENT_H

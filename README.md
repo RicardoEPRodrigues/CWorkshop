@@ -1,8 +1,10 @@
-# C Calculator Workshop
+# C Workshop
 
-A simple calculator was created using C and the command line. It keeps a current value and you are able to do simple math operations.
+This project as 2 projects, Calculator and Cenix.
 
-In the Cenix folder there is also an example of a more complex use of C and how it can scale. It's a small example of a fictional Learning System. You can find two main structures, the student and the course.
+Calculator is a simple calculator that was created using C and GCC. It keeps a current value and you are able to do simple math operations.
+
+Cenix is a more complex example using of C and pointers. It's a small example of a fictional Learning System. You can find two main structures, the student and the course.
 
 ## Building and Executing
 
@@ -25,9 +27,6 @@ gcc -Wall -pedantic -g3 -Og -Wuninitialized calculator.c -o calculator.run
 **Cenix**:
 
 ```
-# move to Cenix folder
-cd Cenix
-
 gcc cenix.c Student.c Course.c -o cenix.run
 
 # OR
@@ -37,9 +36,6 @@ gcc -Wall -pedantic -g3 -Og -Wuninitialized cenix.c Student.c Course.c -o cenix.
 
 # Run the program
 ./cenix.run
-
-# move back to main folder
-cd ..
 ```
 
 ## Extra

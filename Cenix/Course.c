@@ -2,14 +2,23 @@
 // Created by Ricardo Rodrigues on 18/10/2017.
 //
 
+#include <stdlib.h>
 #include <memory.h>
 #include <stdio.h>
 #include "Course.h"
 
-Course Course_new(const char name[50], unsigned int id) {
-    Course course = {{0}, id, {{""}}, 0};
-    strcpy(course.name, name);
+Course* Course_new(const char name[50], unsigned int id) {
+    Course* course = malloc(sizeof(Course));
+    course->id = id;
+    strcpy(course->name, name);
+    // course->news = (char[10][50]){{""}};
+    course->newsCount = 0;
     return course;
+}
+
+void Course_delete(Course* course) {
+    if (course == NULL) return;
+    free(course);
 }
 
 void Course_addNews(Course *course, char news[50]) {
