@@ -26,14 +26,14 @@ void Number_exchange(Number* a, Number* b) {
 }
 
 Vector* Vector_create(unsigned int size) {
-    Vector* array = malloc(sizeof(Vector));
-    array->a = malloc(sizeof(Number) * size);
-    array->size = size;
-    return array;
+    Vector* vector = malloc(sizeof(Vector));
+    vector->a = calloc(size, sizeof(Number));
+    vector->size = size;
+    return vector;
 }
 
 Vector* Vector_createFromArray(Number* a, unsigned int size) {
-    Vector* vector = Vector_create(size);
+    Vector* vector = malloc(sizeof(Vector));
     vector->a = a;
     vector->size = size;
     return vector;
@@ -44,13 +44,15 @@ Vector* Vector_createFromArrayCopy(Number* a, unsigned int size) {
     for (unsigned int i = 0; i < size; ++i) {
         vector->a[i] = a[i];
     }
-    vector->size = size;
     return vector;
 }
 
-void Vector_destroy(Vector* array) {
-    free(array->a);
-    free(array);
+void Vector_destroy(Vector* vector) {
+    if (vector == NULL) return;
+
+    if (vector->a != NULL)
+        free(vector->a);
+    free(vector);
 }
 
 void Vector_print(Vector* vector) {

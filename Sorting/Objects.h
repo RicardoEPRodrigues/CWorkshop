@@ -21,7 +21,7 @@ typedef struct {
 Vector* Vector_create(unsigned int size);
 Vector* Vector_createFromArray(Number* a, unsigned int size);
 Vector* Vector_createFromArrayCopy(Number* a, unsigned int size);
-void Vector_destroy(Vector* array);
+void Vector_destroy(Vector* vector);
 void Vector_print(Vector* vector);
 void Vector_printRange(Vector* vector, unsigned int min, unsigned int max);
 int Vector_isNull(Vector* vector);
