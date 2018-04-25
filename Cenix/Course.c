@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <stdio.h>
+#include <string.h>
 #include "Course.h"
 
 Course* Course_new(const char name[50], unsigned int id) {
