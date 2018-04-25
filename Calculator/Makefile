@@ -1,6 +1,6 @@
 TARGET=calculator.run
 CC=gcc
-CFLAGS=-Wall -pedantic -g3 -Og -Wuninitialized 
+CFLAGS=-Wall -pedantic -g3 -Og -Wuninitialized -ansi
 LIBS=
 
 HEADERS=
