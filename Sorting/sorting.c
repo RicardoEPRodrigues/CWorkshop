@@ -4,6 +4,7 @@
 #include "InsertionSort.h"
 #include "BubbleSort.h"
 #include "HeapSort.h"
+#include "QuickSort.h"
 
 typedef void (* SortFunction)(Vector*, unsigned int);
 
@@ -25,9 +26,10 @@ int main() {
             {Sort_Selection_Vector, Sort_Selection_Vector_Range, "Selection Sort"},
             {Sort_Insertion_Vector, Sort_Insertion_Vector_Range, "Insertion Sort"},
             {Sort_Bubble_Vector,    Sort_Bubble_Vector_Range,    "Bubble Sort"},
-            {Sort_Heap_Vector,      Sort_Heap_Vector_Range,      "Heap Sort"}
+            {Sort_Heap_Vector,      Sort_Heap_Vector_Range,      "Heap Sort"},
+            {Sort_Quick_Vector,      Sort_Quick_Vector_Range,      "Quick Sort"}
     };
-    int functionsSize = 4;
+    int functionsSize = 5;
 
     for (int i = 0; i < functionsSize; ++i) {
         printf("\nRunning %s\n", functions[i].name);

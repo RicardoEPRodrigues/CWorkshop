@@ -14,5 +14,5 @@ set(CENIX_SOURCE_FILES
         InsertionSort.c InsertionSort.h
         BubbleSort.c BubbleSort.h
         HeapSort.c HeapSort.h
-        )
+        QuickSort.c QuickSort.h)
 add_executable(sorting.run ${CENIX_SOURCE_FILES})
