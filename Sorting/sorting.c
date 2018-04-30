@@ -91,5 +91,9 @@ int main() {
 
     Vector_destroy(vector);
 
+#if DEBUG
+    printf("Debug Flag is active!\n");
+#endif
+
     return 0;
 }
