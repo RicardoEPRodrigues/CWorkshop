@@ -17,6 +17,18 @@ typedef struct {
     char* name;
 } SortFunctionPair;
 
+int lessFunc(const void* a, const void* b) {
+    return *(int*) a < *(int*) b;
+}
+
+void print(const void* v, int l, int r) {
+    printf("Array = { ");
+    for (int i = l; i <= r; ++i) {
+        printf("%3d", ((int*)v)[i]);
+    }
+    printf(" }\n");
+}
+
 int main() {
     printf("Hello! Let's sort this out!\n");
     unsigned int debug = 0;
@@ -27,7 +39,7 @@ int main() {
             {Sort_Insertion_Vector, Sort_Insertion_Vector_Range, "Insertion Sort"},
             {Sort_Bubble_Vector,    Sort_Bubble_Vector_Range,    "Bubble Sort"},
             {Sort_Heap_Vector,      Sort_Heap_Vector_Range,      "Heap Sort"},
-            {Sort_Quick_Vector,      Sort_Quick_Vector_Range,      "Quick Sort"}
+            {Sort_Quick_Vector,     Sort_Quick_Vector_Range,     "Quick Sort"}
     };
     int functionsSize = 5;
 
@@ -64,6 +76,20 @@ int main() {
 
         Vector_destroy(vector);
     }
+
+
+    printf("\nRunning Insertion sort using Void function\n");
+    Vector* vector = Vector_createFromArrayCopy(v, 6);
+
+    printf("Initial Array:\n");
+    Vector_print(vector);
+
+    Sort_Insertion_Range((void*) vector->a, 0, 5, sizeof(Number), lessFunc, print);
+
+    printf("Sorted Array:\n");
+    Vector_print(vector);
+
+    Vector_destroy(vector);
 
     return 0;
 }

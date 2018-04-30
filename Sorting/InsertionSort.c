@@ -28,3 +28,28 @@ void Sort_Insertion_Vector_Range(Vector* v, unsigned int l, unsigned int r,
         }
     }
 }
+
+void swap(void* a, void* b, size_t len) {
+    unsigned char* p = a, * q = b, tmp;
+    for (size_t i = 0; i != len; ++i) {
+        tmp = p[i];
+        p[i] = q[i];
+        q[i] = tmp;
+    }
+}
+
+void Sort_Insertion_Range(void* v, int l, int r, size_t size,
+                                int (* less)(const void*, const void*),
+                                void (* print)(const void*, int, int)) {
+    int i, j;
+    for (i = l + 1; i <= r; i++) {
+        void* value = (char*) v + (i * size);
+        j = i - 1;
+        while (j >= l && less(value, (char*) v + (j * size))) {
+            swap((char*) v + ((j + 1) * size), (char*) v + (j * size), size);
+            value = (char*) v + (j * size);
+            j--;
+        }
+        print(v, l, r);
+    }
+}
