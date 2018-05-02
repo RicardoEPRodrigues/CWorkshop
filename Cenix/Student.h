@@ -1,6 +1,6 @@
-//
-// Created by Ricardo Rodrigues on 18/10/2017.
-//
+/*
+ * Created by Ricardo Rodrigues on 18/10/2017.
+ */
 
 #ifndef CWORKSHOP10_17_STUDENT_H
 #define CWORKSHOP10_17_STUDENT_H
@@ -23,4 +23,4 @@ void Student_addCourse(Student* student, Course* course);
 
 void Student_info(Student* student);
 
-#endif //CWORKSHOP10_17_STUDENT_H
+#endif

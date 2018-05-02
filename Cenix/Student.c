@@ -1,6 +1,6 @@
-//
-// Created by Ricardo Rodrigues on 18/10/2017.
-//
+/*
+ * Created by Ricardo Rodrigues on 18/10/2017.
+ */
 
 #include <memory.h>
 #include <stdio.h>
@@ -30,9 +30,10 @@ void Student_addCourse(Student* student, Course* course) {
 }
 
 void Student_info(Student* student) {
+    unsigned int i;
     printf("Name: %s; Id: %d;\n", student->name, student->id);
     printf("Courses:\n");
-    for (unsigned int i = 0; i < student->coursesCount; ++i) {
+    for (i = 0; i < student->coursesCount; ++i) {
         Course_info(student->courses[i]);
     }
 }

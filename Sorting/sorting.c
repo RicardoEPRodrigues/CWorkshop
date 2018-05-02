@@ -6,10 +6,9 @@
 #include "HeapSort.h"
 #include "QuickSort.h"
 
-typedef void (* SortFunction)(Vector*, unsigned int);
+typedef void (* SortFunction)(Vector*);
 
-typedef void (* SortRangeFunction)(Vector*, unsigned int, unsigned int,
-                                   unsigned int);
+typedef void (* SortRangeFunction)(Vector*, unsigned int, unsigned int);
 
 typedef struct {
     SortFunction sortFunction;
@@ -22,16 +21,15 @@ int lessFunc(const void* a, const void* b) {
 }
 
 void print(const void* v, int l, int r) {
+    int i;
     printf("Array = { ");
-    for (int i = l; i <= r; ++i) {
-        printf("%3d", ((int*)v)[i]);
+    for (i = l; i <= r; ++i) {
+        printf("%3d", ((int*) v)[i]);
     }
     printf(" }\n");
 }
 
 int main() {
-    printf("Hello! Let's sort this out!\n");
-    unsigned int debug = 0;
     int v[] = {72, 29, 38, 22, 60, 2};
 
     SortFunctionPair functions[] = {
@@ -42,15 +40,20 @@ int main() {
             {Sort_Quick_Vector,     Sort_Quick_Vector_Range,     "Quick Sort"}
     };
     int functionsSize = 5;
+    int i;
+    Vector* vector;
+    unsigned int min = 1, max = 4;
 
-    for (int i = 0; i < functionsSize; ++i) {
+    printf("Hello! Let's sort this out!\n");
+
+    for (i = 0; i < functionsSize; ++i) {
         printf("\nRunning %s\n", functions[i].name);
-        Vector* vector = Vector_createFromArrayCopy(v, 6);
+        vector = Vector_createFromArrayCopy(v, 6);
 
         printf("Initial Array:\n");
         Vector_print(vector);
 
-        (*functions[i].sortFunction)(vector, debug);
+        (*functions[i].sortFunction)(vector);
 
         printf("Sorted Array:\n");
         Vector_print(vector);
@@ -58,18 +61,17 @@ int main() {
         Vector_destroy(vector);
     }
 
-    unsigned int min = 1, max = 4;
     printf("\nLet's sort just part of the vector, from index %1d to %1d\n", min,
            max);
 
-    for (int i = 0; i < functionsSize; ++i) {
+    for (i = 0; i < functionsSize; ++i) {
         printf("\nRunning %s\n", functions[i].name);
-        Vector* vector = Vector_createFromArrayCopy(v, 6);
+        vector = Vector_createFromArrayCopy(v, 6);
 
         printf("Initial Array:\n");
         Vector_print(vector);
 
-        (*functions[i].sortRangeFunction)(vector, min, max, debug);
+        (*functions[i].sortRangeFunction)(vector, min, max);
 
         printf("Sorted Array:\n");
         Vector_print(vector);
@@ -77,14 +79,14 @@ int main() {
         Vector_destroy(vector);
     }
 
-
     printf("\nRunning Insertion sort using Void function\n");
-    Vector* vector = Vector_createFromArrayCopy(v, 6);
+    vector = Vector_createFromArrayCopy(v, 6);
 
     printf("Initial Array:\n");
     Vector_print(vector);
 
-    Sort_Insertion_Range((void*) vector->a, 0, 5, sizeof(Number), lessFunc, print);
+    Sort_Insertion_Range((void*) vector->a, 0, 5, sizeof(Number), lessFunc,
+                         print);
 
     printf("Sorted Array:\n");
     Vector_print(vector);

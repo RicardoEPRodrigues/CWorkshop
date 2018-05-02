@@ -31,9 +31,9 @@ void Clear() {
 }
 
 int main() {
-    printf("Hello! Welcome to the CWorkshop Calculator!\n\n");
-    
     char option = 0;
+
+    printf("Hello! Welcome to the CWorkshop Calculator!\n\n");
     do {
     
         printf("Valor: %f\n", value);

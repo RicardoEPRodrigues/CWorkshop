@@ -26,4 +26,4 @@ void Vector_print(Vector* vector);
 void Vector_printRange(Vector* vector, unsigned int min, unsigned int max);
 int Vector_isNull(Vector* vector);
 
-#endif //CWORKSHOP_OBJECTS_H
+#endif

@@ -15,7 +15,7 @@ int Heap_right(int k);
 void Heap_FixDown(Vector* v, int l, int r, int index);
 void Heap_buildheap(Vector* v, int l, int r);
 
-void Sort_Heap_Vector(Vector* v, unsigned int debug);
-void Sort_Heap_Vector_Range(Vector* v, unsigned int l, unsigned int r, unsigned int debug);
+void Sort_Heap_Vector(Vector* v);
+void Sort_Heap_Vector_Range(Vector* v, unsigned int l, unsigned int r);
 
-#endif //CWORKSHOP_HEAPSORT_H
+#endif

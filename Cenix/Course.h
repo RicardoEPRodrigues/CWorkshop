@@ -1,6 +1,6 @@
-//
-// Created by Ricardo Rodrigues on 18/10/2017.
-//
+/*
+ * Created by Ricardo Rodrigues on 18/10/2017.
+ */
 
 #ifndef CWORKSHOP10_17_COURSE_H
 #define CWORKSHOP10_17_COURSE_H
@@ -21,4 +21,4 @@ void Course_addNews(Course* course, char news[50]);
 
 void Course_info(Course* course);
 
-#endif //CWORKSHOP10_17_COURSE_H
+#endif

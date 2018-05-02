@@ -5,16 +5,15 @@
  */
 #include "InsertionSort.h"
 
-void Sort_Insertion_Vector(Vector* v, unsigned int debug) {
-    Sort_Insertion_Vector_Range(v, 0, v->size - 1, debug);
+void Sort_Insertion_Vector(Vector* v) {
+    Sort_Insertion_Vector_Range(v, 0, v->size - 1);
 }
 
-void Sort_Insertion_Vector_Range(Vector* v, unsigned int l, unsigned int r,
-                                 unsigned int debug) {
-    if (l > r || Vector_isNull(v) || r >= v->size) return;
+void Sort_Insertion_Vector_Range(Vector* v, unsigned int l, unsigned int r) {
     unsigned int i;
     int j;
     Number* a = v->a;
+    if (l > r || Vector_isNull(v) || r >= v->size) return;
     for (i = l + 1; i <= r; i++) {
         Number value = a[i];
         j = i - 1;
@@ -23,15 +22,16 @@ void Sort_Insertion_Vector_Range(Vector* v, unsigned int l, unsigned int r,
             j--;
         }
         a[j + 1] = value;
-        if (debug) {
-            Vector_printRange(v, l, r);
-        }
+#if DEBUG
+        Vector_printRange(v, l, r);
+#endif
     }
 }
 
 void swap(void* a, void* b, size_t len) {
     unsigned char* p = a, * q = b, tmp;
-    for (size_t i = 0; i != len; ++i) {
+    size_t i;
+    for (i = 0; i != len; ++i) {
         tmp = p[i];
         p[i] = q[i];
         q[i] = tmp;
@@ -39,8 +39,8 @@ void swap(void* a, void* b, size_t len) {
 }
 
 void Sort_Insertion_Range(void* v, int l, int r, size_t size,
-                                int (* less)(const void*, const void*),
-                                void (* print)(const void*, int, int)) {
+                          int (* less)(const void*, const void*),
+                          void (* print)(const void*, int, int)) {
     int i, j;
     for (i = l + 1; i <= r; i++) {
         void* value = (char*) v + (i * size);
@@ -50,6 +50,9 @@ void Sort_Insertion_Range(void* v, int l, int r, size_t size,
             value = (char*) v + (j * size);
             j--;
         }
-        print(v, l, r);
+#if DEBUG
+        if (print != NULL)
+            print(v, l, r);
+#endif
     }
 }

@@ -5,23 +5,22 @@
  */
 #include "SelectionSort.h"
 
-void Sort_Selection_Vector(Vector* v, unsigned int debug) {
-    Sort_Selection_Vector_Range(v, 0, v->size - 1, debug);
+void Sort_Selection_Vector(Vector* v) {
+    Sort_Selection_Vector_Range(v, 0, v->size - 1);
 }
 
-void Sort_Selection_Vector_Range(Vector* v, unsigned int l, unsigned int r,
-                                 unsigned int debug) {
-    if (l > r || Vector_isNull(v) || r >= v->size) return;
+void Sort_Selection_Vector_Range(Vector* v, unsigned int l, unsigned int r) {
     unsigned int i, j;
     Number* a = v->a;
+    if (l > r || Vector_isNull(v) || r >= v->size) return;
     for (i = l; i < r; i++) {
         int min = i;
         for (j = i + 1; j <= r; j++)
             if (Number_less(&a[j], &a[min]))
                 min = j;
         Number_exchange(&a[i], &a[min]);
-        if (debug) {
-            Vector_printRange(v, l, r);
-        }
+#if DEBUG
+        Vector_printRange(v, l, r);
+#endif
     }
 }

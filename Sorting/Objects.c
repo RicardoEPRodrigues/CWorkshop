@@ -41,7 +41,8 @@ Vector* Vector_createFromArray(Number* a, unsigned int size) {
 
 Vector* Vector_createFromArrayCopy(Number* a, unsigned int size) {
     Vector* vector = Vector_create(size);
-    for (unsigned int i = 0; i < size; ++i) {
+    unsigned int i;
+    for (i = 0; i < size; ++i) {
         vector->a[i] = a[i];
     }
     return vector;
@@ -63,11 +64,12 @@ void Vector_print(Vector* vector) {
 }
 
 void Vector_printRange(Vector* vector, unsigned int min, unsigned int max) {
+    unsigned int i;
     if (min > max || vector == NULL || max >= vector->size)
         return;
 
     printf("Array = { ");
-    for (unsigned int i = min; i <= max; ++i) {
+    for (i = min; i <= max; ++i) {
         printf("%3d", vector->a[i]);
     }
     printf(" }\n");

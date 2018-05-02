@@ -1,15 +1,12 @@
 TARGET = calculator.run
 CC = gcc
-CFLAGS = -Wall -pedantic -g3 -Og -Wuninitialized 
+CFLAGS = -Wall -pedantic -g3 -Og -Wuninitialized -ansi
 LIBS =
-
-HEADERS=
-SOURCES = calculator.c
 
 .PHONY: default all clean
 
-default: $(TARGET)
 all: default
+default: $(TARGET)
 
 HEADERS = $(wildcard *.h)
 SOURCES = $(wildcard *.c)

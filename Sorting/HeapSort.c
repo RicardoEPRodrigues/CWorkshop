@@ -38,22 +38,21 @@ void Heap_buildheap(Vector* v, int l, int r) {
         Heap_FixDown(v, l, r, l + k);
 }
 
-void Sort_Heap_Vector(Vector* v, unsigned int debug) {
-    Sort_Heap_Vector_Range(v, 0, v->size - 1, debug);
+void Sort_Heap_Vector(Vector* v) {
+    Sort_Heap_Vector_Range(v, 0, v->size - 1);
 }
 
-void Sort_Heap_Vector_Range(Vector* v, unsigned int l, unsigned int r,
-                            unsigned int debug) {
+void Sort_Heap_Vector_Range(Vector* v, unsigned int l, unsigned int r) {
     if (l > r || Vector_isNull(v) || r >= v->size) return;
     Heap_buildheap(v, l, r);
-    if (debug) {
-        Vector_printRange(v, l, r);
-    }
+#if DEBUG
+    Vector_printRange(v, l, r);
+#endif
     while (r - l > 0) {
         Number_exchange(&v->a[l], &v->a[r]);
         Heap_FixDown(v, l, --r, l);
-        if (debug) {
-            Vector_printRange(v, l, r);
-        }
+#if DEBUG
+        Vector_printRange(v, l, r);
+#endif
     }
 }

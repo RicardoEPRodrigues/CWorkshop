@@ -25,7 +25,8 @@ float ReadValue() {
 int main() {
     Calculator calculators[3];
     char input;
-    int i, id, currentIndex;
+    int i, currentIndex;
+    unsigned int id;
 
     calculators[0].id = 50;
     calculators[1].id = 33;
@@ -39,7 +40,7 @@ int main() {
         }
 
         printf("ID? ");
-        scanf("%d", &id);
+        scanf("%u", &id);
 
         currentIndex = -1;
         for (i = 0; i < 3; i++ ) {
