@@ -30,6 +30,9 @@ void print(const void* v, int l, int r) {
 }
 
 int main() {
+#if OS_WIN
+    int input = 0;
+#endif
     int v[] = {72, 29, 38, 22, 60, 2};
 
     SortFunctionPair functions[] = {
@@ -95,6 +98,10 @@ int main() {
 
 #if DEBUG
     printf("Debug Flag is active!\n");
+#endif
+
+#if OS_WIN
+    scanf("%d", &input);
 #endif
 
     return 0;
